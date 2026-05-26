@@ -12,6 +12,7 @@ func _ready() -> void:
 	color = Color.WHITE
 	label = Label.new()
 	add_child(label)
+	box_value = ""
 	label.size = Vector2(50, 50)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -41,4 +42,5 @@ func _input(event: InputEvent) -> void:
 				box_value = inputnum
 			elif OS.get_keycode_string(event.keycode) == "Backspace":
 				label.text = ""
+				box_value = ""
 			
