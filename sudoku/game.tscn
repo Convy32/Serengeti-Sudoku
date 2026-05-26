@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://dcnqwmyto5pqs"]
 
 [ext_resource type="Script" uid="uid://laykepskvs6l" path="res://grid_container.gd" id="1_80nbo"]
+[ext_resource type="FontFile" uid="uid://b1vallubdqtnr" path="res://ChivoMono-VariableFont_wght.ttf" id="1_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://c5qdecpb0w03y" path="res://greygb1.png" id="3_fc0e3"]
+[ext_resource type="Script" uid="uid://ck65epadkok3r" path="res://checkrow_test.gd" id="5_7jktm"]
 [ext_resource type="Texture2D" uid="uid://bt8yarauyheww" path="res://blackgrid1.png" id="6_ryrav"]
+
+[sub_resource type="Theme" id="Theme_feb5d"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("1_fc0e3")
 
 [node name="Control" type="Control" unique_id=591113563]
 layout_mode = 3
@@ -13,6 +20,7 @@ offset_right = -2.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_feb5d")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2128346661]
 position = Vector2(575, 325)
@@ -44,3 +52,12 @@ texture = ExtResource("3_fc0e3")
 [node name="Blackgrid1" type="Sprite2D" parent="GridContainer" unique_id=1231953198]
 position = Vector2(241, 241)
 texture = ExtResource("6_ryrav")
+
+[node name="Button" type="Button" parent="." unique_id=421031868]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 233.0
+offset_right = 833.0
+offset_bottom = 306.0
+text = "check row"
+script = ExtResource("5_7jktm")
