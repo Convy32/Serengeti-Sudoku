@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dcnqwmyto5pqs"]
+
+[ext_resource type="Script" uid="uid://laykepskvs6l" path="res://grid_container.gd" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://c5qdecpb0w03y" path="res://greygb1.png" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://bt8yarauyheww" path="res://blackgrid1.png" id="6_ryrav"]
+
+[node name="Control" type="Control" unique_id=591113563]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2128346661]
+position = Vector2(575, 325)
+enabled = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=861786950]
+position = Vector2(399, 299)
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1870618181]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -402.0
+offset_top = -180.0
+offset_right = 48.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+script = ExtResource("1_80nbo")
+
+[node name="Greygb1" type="Sprite2D" parent="GridContainer" unique_id=1592395202]
+position = Vector2(241, 241)
+texture = ExtResource("3_fc0e3")
+
+[node name="Blackgrid1" type="Sprite2D" parent="GridContainer" unique_id=1231953198]
+position = Vector2(241, 241)
+texture = ExtResource("6_ryrav")
