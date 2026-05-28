@@ -70,5 +70,61 @@ offset_right = 993.0
 offset_bottom = 478.0
 text = "check all boxes"
 
+[node name="MenuBar" type="MenuBar" parent="." unique_id=1693006105]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 145.0
+offset_right = 872.0
+offset_bottom = 185.0
+
+[node name="Button" type="Button" parent="MenuBar" unique_id=206118091]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = 82.0
+offset_bottom = 65.0
+
+[node name="PopupMenu" type="PopupMenu" parent="MenuBar" unique_id=1638323941]
+oversampling_override = 1.0
+item_count = 1
+item_0/text = "Check all"
+item_0/id = 0
+
+[node name="MenuButton" type="MenuButton" parent="." unique_id=2003038499]
+layout_mode = 0
+offset_left = 783.0
+offset_top = 107.0
+offset_right = 849.0
+offset_bottom = 145.0
+text = "Check"
+item_count = 4
+popup/item_0/text = "Puzzle"
+popup/item_0/id = 0
+popup/item_1/text = "Row"
+popup/item_1/id = 1
+popup/item_2/text = "Column"
+popup/item_2/id = 2
+popup/item_3/text = "Box"
+popup/item_3/id = 3
+
+[node name="Button" type="Button" parent="." unique_id=2140785653]
+layout_mode = 0
+offset_left = 946.0
+offset_top = 163.0
+offset_right = 1014.0
+offset_bottom = 207.0
+text = "allrows"
+
+[node name="Button2" type="Button" parent="." unique_id=1492556243]
+layout_mode = 0
+offset_left = 951.0
+offset_top = 237.0
+offset_right = 1035.0
+offset_bottom = 269.0
+text = "allcols"
+
 [connection signal="pressed" from="CheckCurrentBox" to="." method="_on_check_current_box_pressed"]
 [connection signal="pressed" from="CheckBoxes" to="." method="_on_check_boxes_pressed"]
+[connection signal="pressed" from="Button" to="." method="check_all_rows"]
+[connection signal="pressed" from="Button2" to="." method="check_all_columns"]
