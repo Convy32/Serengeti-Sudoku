@@ -16,19 +16,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -2.0
-offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_feb5d")
 script = ExtResource("2_ryrav")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2128346661]
-position = Vector2(575, 325)
+position = Vector2(640, 360)
 enabled = false
-
-[node name="Node2D" type="Node2D" parent="." unique_id=861786950]
-position = Vector2(399, 299)
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1870618181]
 layout_mode = 1
@@ -37,10 +32,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -402.0
-offset_top = -180.0
-offset_right = 48.0
-offset_bottom = 270.0
+offset_left = -489.0
+offset_top = -186.0
+offset_right = -39.0
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
@@ -72,41 +67,44 @@ text = "check all boxes"
 
 [node name="MenuBar" type="MenuBar" parent="." unique_id=1693006105]
 layout_mode = 0
-offset_left = 745.0
-offset_top = 145.0
-offset_right = 872.0
-offset_bottom = 185.0
+offset_left = 129.0
+offset_top = 108.0
+offset_right = 248.0
+offset_bottom = 139.0
 
-[node name="Button" type="Button" parent="MenuBar" unique_id=206118091]
-visible = false
-layout_mode = 0
-offset_left = 19.0
-offset_top = 24.0
-offset_right = 82.0
-offset_bottom = 65.0
-
-[node name="PopupMenu" type="PopupMenu" parent="MenuBar" unique_id=1638323941]
+[node name="Check Current" type="PopupMenu" parent="MenuBar" unique_id=1638323941]
 oversampling_override = 1.0
-item_count = 1
-item_0/text = "Check all"
+item_count = 3
+item_0/text = "Box"
 item_0/id = 0
+item_1/text = "Row"
+item_1/id = 1
+item_2/text = "Column"
+item_2/id = 2
 
-[node name="MenuButton" type="MenuButton" parent="." unique_id=2003038499]
+[node name="MenuBar2" type="MenuBar" parent="." unique_id=1158981240]
 layout_mode = 0
-offset_left = 783.0
-offset_top = 107.0
-offset_right = 849.0
-offset_bottom = 145.0
-text = "Check"
-item_count = 4
-popup/item_0/text = "Puzzle"
-popup/item_0/id = 0
-popup/item_1/text = "Row"
-popup/item_1/id = 1
-popup/item_2/text = "Column"
-popup/item_2/id = 2
-popup/item_3/text = "Box"
-popup/item_3/id = 3
+offset_left = 282.0
+offset_top = 108.0
+offset_right = 361.0
+offset_bottom = 139.0
+
+[node name="Check All" type="PopupMenu" parent="MenuBar2" unique_id=111085305]
+item_count = 3
+item_0/text = "Boxes"
+item_0/id = 0
+item_1/text = "Rows"
+item_1/id = 1
+item_2/text = "Columns"
+item_2/id = 2
+
+[node name="Check Puzzle" type="Button" parent="." unique_id=2009841287]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 108.0
+offset_right = 501.0
+offset_bottom = 139.0
+text = "Check Puzzle"
 
 [node name="Button" type="Button" parent="." unique_id=2140785653]
 layout_mode = 0

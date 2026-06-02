@@ -45,6 +45,8 @@ func _on_check_current_box_pressed() -> void:
 
 
 func check_all_rows() -> void:
+	Globals.all_rows_complete = false
+	var rowscomplete = 0
 	for r1 in range(3):
 		for r2 in range(3):
 			var row = []
@@ -52,9 +54,18 @@ func check_all_rows() -> void:
 				for j in range(3):
 					print(i+r1*3, " ", j+r2*3)
 					row.append($GridContainer.get_child(i+r1*3+2).get_child(j+r2*3))
-				
+
 			print()
-			print(check_spaces(row))
+			print(check_spaces(row)) 
+			if check_spaces(row) == true:
+				rowscomplete += 1
+
+	if rowscomplete == 9:
+		Globals.all_rows_complete = true
+	
+	print()
+	print(Globals.all_rows_complete)
+
 
 
 func check_all_columns() -> void:
@@ -68,3 +79,9 @@ func check_all_columns() -> void:
 				
 			print()
 			print(check_spaces(column))
+			if check_spaces(column) == false:
+				print("col fail")
+			elif check_spaces(column) == true:
+				print("col pass")
+			else:
+				print("error col")
