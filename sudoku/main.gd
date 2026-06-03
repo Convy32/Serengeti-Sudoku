@@ -47,18 +47,14 @@ func _on_check_current_box_pressed() -> void:
 func check_all_rows() -> void:
 	Globals.all_rows_complete = false
 	var rowscomplete = 0
-	for r1 in range(3):
-		for r2 in range(3):
-			var row = []
-			for i in range(3):
-				for j in range(3):
-					print(i+r1*3, " ", j+r2*3)
-					row.append($GridContainer.get_child(i+r1*3+2).get_child(j+r2*3))
-
-			print()
-			print(check_spaces(row)) 
-			if check_spaces(row) == true:
-				rowscomplete += 1
+	for c in range(9):
+		var row = []
+		for r in range(9):
+			row.append($GridContainer.get_child(r + (c * 9)))
+		
+		print(check_spaces(row)) 
+		if check_spaces(row) == true:
+			rowscomplete += 1
 
 	if rowscomplete == 9:
 		Globals.all_rows_complete = true
