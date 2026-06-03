@@ -24,6 +24,10 @@ Globals="*uid://dcttmxko0pns0"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

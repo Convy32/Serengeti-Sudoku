@@ -5,7 +5,6 @@ var label
 var active = false
 var box_value
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("grid_spaces")
 	custom_minimum_size = Vector2(50, 50)
@@ -29,9 +28,6 @@ func _gui_input(event: InputEvent) -> void:
 				space.color = Color.WHITE
 			active = true
 			color = Color.GRAY
-			#on_event is InputEventKey:
-				#label.text = "1"
-			#label.text = "3"
 
 func _input(event: InputEvent) -> void:
 	
