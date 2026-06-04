@@ -13,11 +13,11 @@ func check_spaces(spaces: Array):
 		if s.box_value:
 			numbers_found.append(s.box_value)
 		if s.box_value == "":
-			s.color = Color(0.54509807, 0, 0, 0.75)
+			s.color = Color(0.6, 0.0, 0.0, 0.75)
 			result = false
 	for s in spaces:
 		if s.box_value in duplicate_numbers:
-			s.color = Color(0.54509807, 0, 0, 0.75)
+			s.color = Color(0.6, 0, 0, 0.75)
 	
 	return result
 
@@ -47,37 +47,35 @@ func _on_check_current_box_pressed() -> void:
 func check_all_rows() -> void:
 	Globals.all_rows_complete = false
 	var rowscomplete = 0
+	
 	for c in range(9):
 		var row = []
 		for r in range(9):
 			row.append($GridContainer.get_child(r + (c * 9)))
-		
-		print(check_spaces(row)) 
+			
+		print(check_spaces(row))
 		if check_spaces(row) == true:
 			rowscomplete += 1
 
 	if rowscomplete == 9:
 		Globals.all_rows_complete = true
 	
-	print()
-	print(Globals.all_rows_complete)
-
-
+	print(Globals.all_rows_complete) #remove after testing
 
 func check_all_columns() -> void:
-	for r1 in range(3):
-		for r2 in range(3):
-			var column = []
-			for i in range(3):
-				for j in range(3):
-					print(i+r1*3, " ", j+r2*3)
-					column.append($GridContainer.get_child(j+r2*3+2).get_child(i+r1*3))
-				
-			print()
-			print(check_spaces(column))
-			if check_spaces(column) == false:
-				print("col fail")
-			elif check_spaces(column) == true:
-				print("col pass")
-			else:
-				print("error col")
+	Globals.all_columns_complete = false
+	var columnscomplete = 0
+	
+	for r in range(9):
+		var column = []
+		for c in range(9):
+			column.append($GridContainer.get_child((c * 9) + r))
+			
+		if check_spaces(column) == true:
+			columnscomplete += 1
+		
+	if columnscomplete == 9:
+		Globals.all_columns_complete = true
+		
+	print()
+	print(Globals.all_columns_complete) #remove after testing
