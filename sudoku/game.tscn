@@ -59,10 +59,10 @@ text = "check current box"
 
 [node name="CheckBoxes" type="Button" parent="." unique_id=468142531]
 layout_mode = 0
-offset_left = 741.0
-offset_top = 345.0
-offset_right = 993.0
-offset_bottom = 478.0
+offset_left = 935.0
+offset_top = 291.0
+offset_right = 1060.0
+offset_bottom = 334.0
 text = "check all boxes"
 
 [node name="MenuBar" type="MenuBar" parent="." unique_id=1693006105]
@@ -122,7 +122,7 @@ offset_right = 1035.0
 offset_bottom = 269.0
 text = "allcols"
 
-[connection signal="pressed" from="CheckCurrentBox" to="." method="_on_check_current_box_pressed"]
-[connection signal="pressed" from="CheckBoxes" to="." method="_on_check_boxes_pressed"]
+[connection signal="pressed" from="CheckBoxes" to="." method="check_all_boxes"]
+[connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
 [connection signal="pressed" from="Button" to="." method="check_all_rows"]
 [connection signal="pressed" from="Button2" to="." method="check_all_columns"]

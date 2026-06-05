@@ -1,6 +1,5 @@
 extends Control
 
-
 func check_spaces(spaces: Array):
 	var result = true
 	var numbers_found = []
@@ -21,29 +20,6 @@ func check_spaces(spaces: Array):
 	
 	return result
 
-
-func _on_check_boxes_pressed() -> void:
-	Globals.all_boxes_complete = false
-	var complete = 0
-	
-	for box in $GridContainer.get_children():
-		if box is GridContainer:
-			if check_spaces(box.get_children()) == false:  #change to true
-					complete += 1
-	
-	if complete == 9:
-		Globals.all_boxes_complete = true
-		print(Globals.all_boxes_complete)
-
-
-func check_current_row():
-	pass
-
-
-func _on_check_current_box_pressed() -> void:
-	check_spaces($GridContainer.get_child(2).get_children())
-
-
 func check_all_rows() -> void:
 	Globals.all_rows_complete = false
 	var rowscomplete = 0
@@ -53,14 +29,11 @@ func check_all_rows() -> void:
 		for r in range(9):
 			row.append($GridContainer.get_child(r + (c * 9)))
 			
-		print(check_spaces(row))
 		if check_spaces(row) == true:
 			rowscomplete += 1
 
 	if rowscomplete == 9:
 		Globals.all_rows_complete = true
-	
-	print(Globals.all_rows_complete) #remove after testing
 
 func check_all_columns() -> void:
 	Globals.all_columns_complete = false
@@ -76,6 +49,29 @@ func check_all_columns() -> void:
 		
 	if columnscomplete == 9:
 		Globals.all_columns_complete = true
+
+func check_all_boxes() -> void:
+	Globals.all_boxes_complete = false
+	var boxescomplete = 0
+	
+	for br in range(3):
+		for bc in range(3):
+			var box = []
+			for r in range(3):
+				for c in range(3):
+					box.append($GridContainer.get_child(c + (9 * r) + (3 * bc) + (27 * br)))
+				
+			if check_spaces(box) == true:
+				boxescomplete += 1
 		
-	print()
-	print(Globals.all_columns_complete) #remove after testing
+	if boxescomplete == 9:
+		Globals.all_boxes_complete = true
+
+func check_puzzle():
+	check_all_boxes()
+	check_all_rows()
+	check_all_columns()
+	if (Globals.all_boxes_complete
+	 and Globals.all_rows_complete 
+	and Globals.all_columns_complete == true):
+		print("yay")
