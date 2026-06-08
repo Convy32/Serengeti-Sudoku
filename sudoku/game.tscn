@@ -122,7 +122,16 @@ offset_right = 1035.0
 offset_bottom = 269.0
 text = "allcols"
 
+[node name="getactive" type="Button" parent="." unique_id=1910207439]
+layout_mode = 0
+offset_left = 734.0
+offset_top = 421.0
+offset_right = 1034.0
+offset_bottom = 471.0
+text = "get active"
+
 [connection signal="pressed" from="CheckBoxes" to="." method="check_all_boxes"]
 [connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
 [connection signal="pressed" from="Button" to="." method="check_all_rows"]
 [connection signal="pressed" from="Button2" to="." method="check_all_columns"]
+[connection signal="pressed" from="getactive" to="." method="test_as"]

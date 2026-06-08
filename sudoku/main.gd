@@ -1,5 +1,9 @@
 extends Control
 
+var healthmode = false #will be used later for difficult levels, where you take
+						#damage if you check incorrectly
+var health = 3 #used for above
+
 func check_spaces(spaces: Array):
 	var result = true
 	var numbers_found = []
@@ -19,6 +23,25 @@ func check_spaces(spaces: Array):
 			s.color = Color(0.6, 0, 0, 0.75)
 	
 	return result
+
+func get_active_space() -> int:
+	var space_active
+	
+	for s in range($GridContainer.get_child_count()): #get amount of spaces (s)
+		var space = $GridContainer.get_child(s)
+		if space.active:
+			return s #return the useable space id (0-80)
+	return -1 #return -1 if there is no active space so it doesnt mess with it
+	
+
+func test_as() -> void:
+	var acti
+	acti = get_active_space()
+	print(acti)
+
+
+
+
 
 func check_all_rows() -> void:
 	Globals.all_rows_complete = false
@@ -71,7 +94,16 @@ func check_puzzle():
 	check_all_boxes()
 	check_all_rows()
 	check_all_columns()
+	
 	if (Globals.all_boxes_complete
-	 and Globals.all_rows_complete 
-	and Globals.all_columns_complete == true):
-		print("yay")
+	and Globals.all_rows_complete 
+	and Globals.all_columns_complete):
+		game_win()
+	elif healthmode == true:
+		health -= 1
+
+func game_win():
+	pass
+
+func game_lose():
+	pass

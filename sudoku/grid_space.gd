@@ -15,10 +15,6 @@ func _ready() -> void:
 	label.size = Vector2(50, 50)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	
-
-	
-
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -39,4 +35,3 @@ func _input(event: InputEvent) -> void:
 			elif OS.get_keycode_string(event.keycode) == "Backspace":
 				label.text = ""
 				box_value = ""
-			
