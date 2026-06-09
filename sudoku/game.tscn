@@ -128,10 +128,28 @@ offset_left = 734.0
 offset_top = 421.0
 offset_right = 1034.0
 offset_bottom = 471.0
-text = "get active"
+text = "current row"
+
+[node name="Button3" type="Button" parent="." unique_id=1717377930]
+layout_mode = 0
+offset_left = 757.0
+offset_top = 354.0
+offset_right = 990.0
+offset_bottom = 391.0
+text = "c col"
+
+[node name="Button4" type="Button" parent="." unique_id=879678230]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 483.0
+offset_right = 1006.0
+offset_bottom = 541.0
+text = "current box"
 
 [connection signal="pressed" from="CheckBoxes" to="." method="check_all_boxes"]
 [connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
 [connection signal="pressed" from="Button" to="." method="check_all_rows"]
 [connection signal="pressed" from="Button2" to="." method="check_all_columns"]
-[connection signal="pressed" from="getactive" to="." method="test_as"]
+[connection signal="pressed" from="getactive" to="." method="check_current_row"]
+[connection signal="pressed" from="Button3" to="." method="check_current_column"]
+[connection signal="pressed" from="Button4" to="." method="check_current_box"]

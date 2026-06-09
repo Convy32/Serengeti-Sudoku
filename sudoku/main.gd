@@ -31,15 +31,37 @@ func get_active_space() -> int:
 		var space = $GridContainer.get_child(s)
 		if space.active:
 			return s #return the useable space id (0-80)
-	return -1 #return -1 if there is no active space so it doesnt mess with it
+	return 0 #return 0 if there is no active space (functions use this regardless)
+
+func get_current_row():
+	var active_row = floor(get_active_space() / 9)
+	return active_row
+
+func get_current_column():
+	var active_column = (get_active_space() - (get_current_row() * 9))
+	return active_column
+
+func check_current_row():
+	var spaces = []
+	for s in range(9):
+		spaces.append($GridContainer.get_child((get_current_row() * 9) + s))
+	check_spaces(spaces)
+
+func check_current_column():
+	var spaces = []
+	for s in range(9):
+		spaces.append($GridContainer.get_child(get_current_column() + (s * 9)))
+	check_spaces(spaces)
+
+func check_current_box():
+	var box_row = floor(get_current_row() / 3)
+	var box_column = floor(get_current_column() / 3)
 	
-
-func test_as() -> void:
-	var acti
-	acti = get_active_space()
-	print(acti)
-
-
+	var spaces = []
+	for br in range(3):
+		for bc in range(3):
+			spaces.append($GridContainer.get_child((box_row * 27) + bc + (br * 9) + (box_column * 3)))
+	check_spaces(spaces)
 
 
 
