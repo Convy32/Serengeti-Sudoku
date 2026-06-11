@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="sudoku"
-run/main_scene="uid://dcnqwmyto5pqs"
+run/main_scene="uid://c8rt8r00j40n3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
