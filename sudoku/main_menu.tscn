@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8rt8r00j40n3"]
 
 [ext_resource type="Texture2D" uid="uid://2hr8gkf330r4" path="res://Main_menu_720.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dh1wg85t7y2py" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Theme" uid="uid://3vq2ejbg8ql2" path="res://mainmenubuttons.tres" id="2_7vrkn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
@@ -88,6 +89,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fu7sn")
 metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="MainMenu720" type="Sprite2D" parent="." unique_id=2007002303]
@@ -128,3 +130,6 @@ offset_bottom = 642.0
 theme = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 48
 text = "Exit"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

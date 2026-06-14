@@ -129,3 +129,28 @@ func game_win():
 
 func game_lose():
 	pass
+
+
+func _on_check_all_id_pressed(id: int) -> void:
+	if id == 0: #boxes
+		check_all_boxes()
+	elif id == 1: #rows
+		check_all_rows()
+	elif id == 2: #cols
+		check_all_columns()
+
+
+func _on_check_current_id_pressed(id: int) -> void:
+	if id == 0: #box
+		check_current_box()
+	if id == 1: #row
+		check_current_row()
+	if id == 2: #col
+		check_current_column()
+
+
+func input_button_pressed(extra_arg_0: int) -> void:
+	var grid_space = get_active_space()
+	$GridContainer.get_child(grid_space).box_value = str(extra_arg_0)
+	$GridContainer.get_child(grid_space).label.text = str(extra_arg_0)
+	

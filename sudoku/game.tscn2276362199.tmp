@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://laykepskvs6l" path="res://grid_container.gd" id="1_80nbo"]
 [ext_resource type="FontFile" uid="uid://b1vallubdqtnr" path="res://ChivoMono-VariableFont_wght.ttf" id="1_fc0e3"]
+[ext_resource type="Script" uid="uid://b8yrfe1pcnivt" path="res://grid_space.gd" id="2_7jktm"]
 [ext_resource type="Script" uid="uid://rka4ge3is85n" path="res://main.gd" id="2_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c5qdecpb0w03y" path="res://greygb1.png" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://bt8yarauyheww" path="res://blackgrid1.png" id="6_ryrav"]
@@ -102,6 +103,7 @@ offset_left = 672.0
 offset_top = 372.0
 offset_right = 698.95996
 offset_bottom = 352.75998
+script = ExtResource("2_7jktm")
 
 [node name="NumInputBox" type="GridContainer" parent="InputBox" unique_id=1949119020]
 layout_mode = 2
@@ -174,4 +176,5 @@ metadata/_edit_lock_ = true
 [connection signal="id_pressed" from="MenuBar/Check Current" to="." method="_on_check_current_id_pressed"]
 [connection signal="id_pressed" from="MenuBar2/Check All" to="." method="_on_check_all_id_pressed"]
 [connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
-[connection signal="pressed" from="InputBox/NumInputBox/Button1" to="." method="input_button_pressed" binds= [1]]
+[connection signal="pressed" from="InputBox/NumInputBox/Button1" to="InputBox" method="input_button_pressed" binds= [1]]
+[connection signal="pressed" from="InputBox/NumInputBox/Button2" to="InputBox" method="input_button_pressed" binds= [2]]
