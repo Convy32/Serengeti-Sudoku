@@ -4,6 +4,9 @@ var healthmode = false #will be used later for difficult levels, where you take
 						#damage if you check incorrectly
 var health = 3 #used for above
 
+func _ready() -> void:
+	PuzzleGen.generate_and_load(Globals.difficulty)
+
 func check_spaces(spaces: Array):
 	var result = true
 	var numbers_found = []
@@ -25,15 +28,14 @@ func check_spaces(spaces: Array):
 	return result
 
 func get_active_space() -> int:
-	var space_active
-	
-	for s in range($GridContainer.get_child_count()): #get amount of spaces (s)
+	for s in range($GridContainer.get_child_count()): #get amount of spaces(s)
 		var space = $GridContainer.get_child(s)
 		if space.active:
 			return s #return the useable space id (0-80)
-	return 0 #return 0 if there is no active space (functions use this regardless)
+	return 0 #return 0 if there is no active space (functions use this)
 
 func get_current_row():
+	@warning_ignore("integer_division")
 	var active_row = floor(get_active_space() / 9)
 	return active_row
 
@@ -59,7 +61,7 @@ func check_current_box():
 	
 	var spaces = []
 	for br in range(3):
-		for bc in range(3):
+		for bc in range(3): #line below should maybe be put onto 2 lines
 			spaces.append($GridContainer.get_child((box_row * 27) + bc + (br * 9) + (box_column * 3)))
 	check_spaces(spaces)
 
@@ -103,7 +105,7 @@ func check_all_boxes() -> void:
 		for bc in range(3):
 			var box = []
 			for r in range(3):
-				for c in range(3):
+				for c in range(3): #line below should be put onto 2 lines
 					box.append($GridContainer.get_child(c + (9 * r) + (3 * bc) + (27 * br)))
 				
 			if check_spaces(box) == true:
@@ -150,7 +152,13 @@ func _on_check_current_id_pressed(id: int) -> void:
 
 
 func input_button_pressed(extra_arg_0: int) -> void:
-	var grid_space = get_active_space()
-	$GridContainer.get_child(grid_space).box_value = str(extra_arg_0)
-	$GridContainer.get_child(grid_space).label.text = str(extra_arg_0)
-	
+	var grid_space = $GridContainer.get_child(get_active_space())
+	if not grid_space.fixed:
+		grid_space.box_value = str(extra_arg_0)
+		grid_space.label.text = str(extra_arg_0)
+
+func eraser_button_pressed() -> void:
+	var grid_space = $GridContainer.get_child(get_active_space())
+	if not grid_space.fixed:
+		grid_space.box_value = ""
+		grid_space.label.text = ""
