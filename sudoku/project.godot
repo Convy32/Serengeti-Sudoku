@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*uid://dcttmxko0pns0"
-PuzzleGen="*uid://ce6v1nsxlp6rh"
 
 [display]
 

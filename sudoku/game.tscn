@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://b1vallubdqtnr" path="res://ChivoMono-VariableFont_wght.ttf" id="1_fc0e3"]
 [ext_resource type="Script" uid="uid://rka4ge3is85n" path="res://main.gd" id="2_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c5qdecpb0w03y" path="res://greygb1.png" id="3_fc0e3"]
+[ext_resource type="Script" uid="uid://dn7hywdobsu33" path="res://loading_screen.gd" id="6_eow3j"]
 [ext_resource type="Texture2D" uid="uid://bt8yarauyheww" path="res://blackgrid1.png" id="6_ryrav"]
 
 [sub_resource type="Theme" id="Theme_feb5d"]
@@ -170,6 +171,27 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 25
 text = "Erase"
 metadata/_edit_lock_ = true
+
+[node name="LoadingScreen" type="Control" parent="." unique_id=2021376657]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("6_eow3j")
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen" unique_id=405260344]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 611.0
+offset_right = 909.0
+offset_bottom = 705.0
+
+[node name="Label" type="Label" parent="LoadingScreen" unique_id=973009061]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 277.0
+offset_right = 849.0
+offset_bottom = 452.0
 
 [connection signal="id_pressed" from="MenuBar/Check Current" to="." method="_on_check_current_id_pressed"]
 [connection signal="id_pressed" from="MenuBar2/Check All" to="." method="_on_check_all_id_pressed"]
