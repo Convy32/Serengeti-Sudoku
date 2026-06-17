@@ -1,11 +1,13 @@
 extends Control
 
+const new_game = preload("res://new_game.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 
 func _on_play_pressed() -> void:
-	Globals.difficulty = "medium"
-	get_tree().change_scene_to_file("res://game.tscn")
+	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	add_child(game_selector)
+	
 	
