@@ -1,1 +1,4 @@
-# sudoku-digi-yr12-1
+# Serengeti Sudoku
+A desktop based Sudoku game with infinite levels*. No network required
+
+*(6.67 × 10²¹ Possible puzzles)
