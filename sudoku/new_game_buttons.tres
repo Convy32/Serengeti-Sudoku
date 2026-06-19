@@ -1,0 +1,49 @@
+[gd_resource type="Theme" format=3 uid="uid://b2m4ma05wpjb4"]
+
+[ext_resource type="FontFile" uid="uid://b1vallubdqtnr" path="res://ChivoMono-VariableFont_wght.ttf" id="1_fdt4j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvvld"]
+bg_color = Color(0.12860578, 0.19816345, 0.34782866, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdt4j"]
+bg_color = Color(0.078431375, 0.12941177, 0.23921569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfuwe"]
+bg_color = Color(0.17449376, 0.26111656, 0.44370916, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/font_sizes/font_size = 38
+Button/fonts/font = ExtResource("1_fdt4j")
+Button/styles/hover = SubResource("StyleBoxFlat_pvvld")
+Button/styles/normal = SubResource("StyleBoxFlat_fdt4j")
+Button/styles/pressed = SubResource("StyleBoxFlat_dfuwe")

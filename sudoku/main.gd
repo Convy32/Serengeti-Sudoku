@@ -1,6 +1,6 @@
 extends Control
 
-var health = 3 #used for above
+const new_game = preload("res://new_game.tscn")
 
 @export var global_grid_container = GridContainer
 
@@ -131,16 +131,20 @@ func check_puzzle():
 	and Globals.all_columns_complete):
 		game_win()
 	elif Globals.difficulty == "hardcore":
-		health -= 1
-		if health <= 0:
+		Globals.health -= 1
+		if Globals.health <= 0:
 			game_lose()
 
 func game_win():
 	pass
 
 func game_lose():
-	pass
+	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	add_child(game_selector)
 
+func _on_new_game_pressed() -> void:
+	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	add_child(game_selector)
 
 func _on_check_all_id_pressed(id: int) -> void:
 	if id == 0: #boxes
@@ -239,6 +243,8 @@ func remove_numbers_chunked(grid: Array, d: String) -> void:
 			removals = 50
 		"hard":
 			removals = 60
+		"hardcore":
+			removals = 70
 
 	var removed := 0
 	var attempts := removals * 3

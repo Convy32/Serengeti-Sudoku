@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://cu1jfriqfptes"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv8gx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpt08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jdrj"]
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxEmpty_fv8gx")
+Button/styles/normal = SubResource("StyleBoxEmpty_vpt08")
+Button/styles/pressed = SubResource("StyleBoxEmpty_4jdrj")

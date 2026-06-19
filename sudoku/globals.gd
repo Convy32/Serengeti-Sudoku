@@ -6,3 +6,5 @@ var all_columns_complete = false
 var puzzle_complete = false
 
 var difficulty = "easy"
+
+var health = 3
