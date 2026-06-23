@@ -1,0 +1,47 @@
+[gd_resource type="Theme" format=3 uid="uid://cndcs6l2sw2ed"]
+
+[ext_resource type="FontFile" uid="uid://bicjk5v1qejgw" path="res://SF Distant Galaxy.ttf" id="1_fgc3e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81eyt"]
+bg_color = Color(0.9607843, 0.05882353, 0.05882353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgc3e"]
+bg_color = Color(0.827451, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pf5x"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/font_sizes/font_size = 72
+Button/fonts/font = ExtResource("1_fgc3e")
+Button/styles/hover = SubResource("StyleBoxFlat_81eyt")
+Button/styles/normal = SubResource("StyleBoxFlat_fgc3e")
+Button/styles/pressed = SubResource("StyleBoxFlat_1pf5x")

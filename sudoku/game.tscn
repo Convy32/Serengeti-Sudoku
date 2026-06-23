@@ -8,6 +8,11 @@
 [ext_resource type="Script" uid="uid://dn7hywdobsu33" path="res://loading_screen.gd" id="6_eow3j"]
 [ext_resource type="Texture2D" uid="uid://bt8yarauyheww" path="res://blackgrid1.png" id="6_ryrav"]
 [ext_resource type="Texture2D" uid="uid://bd12jw4ns8b0u" path="res://loadingscreen.png" id="7_eow3j"]
+[ext_resource type="Texture2D" uid="uid://coq1wf8unko64" path="res://GameWin.png" id="9_iotsf"]
+[ext_resource type="Theme" uid="uid://b2m4ma05wpjb4" path="res://new_game_buttons.tres" id="10_lc2xo"]
+[ext_resource type="FontFile" uid="uid://bicjk5v1qejgw" path="res://SF Distant Galaxy.ttf" id="11_215e1"]
+[ext_resource type="Theme" uid="uid://b88bhbgjdqr5g" path="res://game_over_buttons.tres" id="12_7sc4i"]
+[ext_resource type="Theme" uid="uid://cndcs6l2sw2ed" path="res://quitbutton.tres" id="13_lc2xo"]
 
 [sub_resource type="Theme" id="Theme_feb5d"]
 Label/colors/font_color = Color(0, 0, 0, 1)
@@ -26,7 +31,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_feb5d")
 script = ExtResource("2_ryrav")
-metadata/_edit_vertical_guides_ = [640.0]
+metadata/_edit_vertical_guides_ = [640.0, 606.0, 602.0, 874.0]
+metadata/_edit_horizontal_guides_ = [453.0, 543.0, 453.0]
 
 [node name="MainMenu720" type="Sprite2D" parent="." unique_id=1643750564]
 position = Vector2(640, 360)
@@ -59,6 +65,14 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 9
 script = ExtResource("1_80nbo")
+
+[node name="Button" type="Button" parent="." unique_id=1536445701]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 187.0
+offset_right = 1229.0
+offset_bottom = 334.0
+text = "game win scene"
 
 [node name="MenuBar" type="MenuBar" parent="." unique_id=1693006105]
 layout_mode = 0
@@ -215,6 +229,65 @@ theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GameWin" type="Control" parent="." unique_id=1862584902]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="GameWin2" type="Sprite2D" parent="GameWin" unique_id=841511387]
+position = Vector2(640, 360)
+texture = ExtResource("9_iotsf")
+
+[node name="NewGame" type="Button" parent="GameWin" unique_id=667322620]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 453.0
+offset_right = 586.0
+offset_bottom = 543.0
+theme = ExtResource("10_lc2xo")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_215e1")
+theme_override_font_sizes/font_size = 40
+text = "New
+Game"
+
+[node name="Button" type="Button" parent="GameWin" unique_id=1191878814]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 453.0
+offset_right = 874.0
+offset_bottom = 493.0
+theme = ExtResource("12_7sc4i")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="Settings" type="Button" parent="GameWin" unique_id=1902516759]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 503.0
+offset_right = 732.0
+offset_bottom = 543.0
+theme = ExtResource("12_7sc4i")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="Quit" type="Button" parent="GameWin" unique_id=395692271]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 503.0
+offset_right = 874.0
+offset_bottom = 543.0
+theme = ExtResource("13_lc2xo")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="GameLose" type="Control" parent="." unique_id=894196565]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[connection signal="pressed" from="Button" to="." method="show_game_win"]
 [connection signal="id_pressed" from="MenuBar/Check Current" to="." method="_on_check_current_id_pressed"]
 [connection signal="id_pressed" from="MenuBar2/Check All" to="." method="_on_check_all_id_pressed"]
 [connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
@@ -229,3 +302,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="InputBox/NumInputBox/Button8" to="." method="input_button_pressed" binds= [8]]
 [connection signal="pressed" from="InputBox/NumInputBox/Button9" to="." method="input_button_pressed" binds= [9]]
 [connection signal="pressed" from="InputBox/Eraser" to="." method="eraser_button_pressed"]
+[connection signal="pressed" from="GameWin/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="GameWin/Button" to="." method="gameover_mainmenu_button_pressed"]
+[connection signal="pressed" from="GameWin/Quit" to="." method="gameover_quit_button_pressed"]

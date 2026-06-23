@@ -1,0 +1,44 @@
+[gd_resource type="Theme" format=3 uid="uid://b88bhbgjdqr5g"]
+
+[ext_resource type="FontFile" uid="uid://bicjk5v1qejgw" path="res://SF Distant Galaxy.ttf" id="1_57ap4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2k4n"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57ap4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.49803922, 0.49803922, 0.49803922, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44psc"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+Button/colors/font_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+Button/fonts/font = ExtResource("1_57ap4")
+Button/styles/hover = SubResource("StyleBoxFlat_i2k4n")
+Button/styles/normal = SubResource("StyleBoxFlat_57ap4")
+Button/styles/pressed = SubResource("StyleBoxFlat_44psc")

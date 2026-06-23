@@ -135,8 +135,17 @@ func check_puzzle():
 		if Globals.health <= 0:
 			game_lose()
 
+func show_game_win() -> void:
+	game_win()
+
+func gameover_mainmenu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+func gameover_quit_button_pressed() -> void:
+	get_tree().quit()
+
 func game_win():
-	pass
+	$GameWin.visible = true
 
 func game_lose():
 	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)

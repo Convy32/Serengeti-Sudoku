@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://2hr8gkf330r4" path="res://Main_menu_720.png" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://dh1wg85t7y2py" path="res://main_menu.gd" id="1_fu7sn"]
-[ext_resource type="Theme" uid="uid://3vq2ejbg8ql2" path="res://mainmenubuttons.tres" id="2_7vrkn"]
+[ext_resource type="Theme" uid="uid://berbaoetvcro3" path="res://quitbuttonMM.tres" id="3_fu7sn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
 bg_color = Color(0.29803923, 0.73333335, 0.09019608, 1)
@@ -102,7 +102,7 @@ offset_left = 460.0
 offset_top = 360.0
 offset_right = 819.9997
 offset_bottom = 480.0
-theme = ExtResource("2_7vrkn")
+theme = ExtResource("3_fu7sn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
@@ -114,22 +114,22 @@ offset_left = 390.0
 offset_top = 560.0
 offset_right = 630.0
 offset_bottom = 640.0
-theme = ExtResource("2_7vrkn")
+theme = ExtResource("3_fu7sn")
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_glbon")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nlkkf")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 text = "Settings"
 
-[node name="Exit" type="Button" parent="." unique_id=416332157]
+[node name="Quit" type="Button" parent="." unique_id=416332157]
 layout_mode = 0
 offset_left = 650.0
 offset_top = 560.0
 offset_right = 890.0
 offset_bottom = 642.0
-theme = ExtResource("2_7vrkn")
+theme = ExtResource("3_fu7sn")
 theme_override_font_sizes/font_size = 48
-text = "Exit"
+text = "Quit"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_exit_pressed"]
