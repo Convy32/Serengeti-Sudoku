@@ -22,6 +22,18 @@ Label/fonts/font = ExtResource("1_fc0e3")
 [sub_resource type="Theme" id="Theme_7jktm"]
 Button/font_sizes/font_size = 40
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc2xo"]
+bg_color = Color(0.91576976, 0.91576916, 0.9157695, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.49803922, 0.49803922, 0.49803922, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Control" type="Control" unique_id=591113563]
 layout_mode = 3
 anchors_preset = 15
@@ -31,8 +43,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_feb5d")
 script = ExtResource("2_ryrav")
-metadata/_edit_vertical_guides_ = [640.0, 606.0, 602.0, 874.0]
-metadata/_edit_horizontal_guides_ = [453.0, 543.0, 453.0]
+metadata/_edit_vertical_guides_ = [1318.0, 1338.0, 1368.0, 1420.0]
+metadata/_edit_horizontal_guides_ = [-31.0, -41.0]
 
 [node name="MainMenu720" type="Sprite2D" parent="." unique_id=1643750564]
 position = Vector2(640, 360)
@@ -230,6 +242,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameWin" type="Control" parent="." unique_id=1862584902]
+visible = false
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -269,6 +282,7 @@ offset_right = 732.0
 offset_bottom = 543.0
 theme = ExtResource("12_7sc4i")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lc2xo")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="GameWin" unique_id=395692271]
@@ -281,11 +295,70 @@ theme = ExtResource("13_lc2xo")
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
+[node name="Label" type="Label" parent="GameWin" unique_id=1209106570]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 217.0
+offset_right = 596.0
+offset_bottom = 265.0
+
+[node name="Label2" type="Label" parent="GameWin" unique_id=1312152465]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 219.0
+offset_right = 777.0
+offset_bottom = 267.0
+
+[node name="Label3" type="Label" parent="GameWin" unique_id=292774405]
+layout_mode = 0
+offset_left = 742.0
+offset_top = 273.0
+offset_right = 782.0
+offset_bottom = 321.0
+
+[node name="Label4" type="Label" parent="GameWin" unique_id=605883156]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 273.0
+offset_right = 600.0
+offset_bottom = 321.0
+
+[node name="Label5" type="Label" parent="GameWin" unique_id=1051403633]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 386.0
+offset_right = 456.0
+offset_bottom = 434.0
+
+[node name="Label6" type="Label" parent="GameWin" unique_id=1310379511]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 386.0
+offset_right = 577.0
+offset_bottom = 434.0
+
+[node name="Label7" type="Label" parent="GameWin" unique_id=447014826]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 386.0
+offset_right = 690.0
+offset_bottom = 434.0
+
+[node name="Label8" type="Label" parent="GameWin" unique_id=1132785032]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 388.0
+offset_right = 832.0
+offset_bottom = 436.0
+
 [node name="GameLose" type="Control" parent="." unique_id=894196565]
 visible = false
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+
+[node name="TimeTimer" type="Timer" parent="." unique_id=1429012144]
+process_callback = 0
 
 [connection signal="pressed" from="Button" to="." method="show_game_win"]
 [connection signal="id_pressed" from="MenuBar/Check Current" to="." method="_on_check_current_id_pressed"]
@@ -305,3 +378,4 @@ offset_bottom = 720.0
 [connection signal="pressed" from="GameWin/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="GameWin/Button" to="." method="gameover_mainmenu_button_pressed"]
 [connection signal="pressed" from="GameWin/Quit" to="." method="gameover_quit_button_pressed"]
+[connection signal="timeout" from="TimeTimer" to="." method="time_tracking"]

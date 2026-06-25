@@ -5,6 +5,8 @@ const new_game = preload("res://new_game.tscn")
 @export var global_grid_container = GridContainer
 
 func _ready() -> void:
+	Globals.time = 0
+	
 	randomize()
 	start_generation(Globals.difficulty)
 
@@ -145,11 +147,16 @@ func gameover_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func game_win():
+	$TimeTimer.stop()
+	
+	Globals.wins[Globals.difficulty] += 1
+	
+	
 	$GameWin.visible = true
 
 func game_lose():
-	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-	add_child(game_selector)
+	$TimeTimer.stop()
+	$GameLose.visible = true
 
 func _on_new_game_pressed() -> void:
 	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
@@ -185,7 +192,12 @@ func eraser_button_pressed() -> void:
 		grid_space.box_value = ""
 		grid_space.label.text = ""
 
+func time_tracking():
+	Globals.time += 1
+	print(Globals.time)
 
+func score():
+	pass
 
 
 
@@ -222,24 +234,26 @@ func start_generation(selected_difficulty: String) -> void:
 	load_puzzle()
 
 func generate_and_load_chunked(selected_difficulty: String) -> void:
-	# Chunk 1: Create empty grid
 	solution = make_empty_grid()
 	await get_tree().process_frame
 	loading_screen.update_progress(20, "Building solution...")
-	
-	# Chunk 2: Fill grid
+
 	fill_grid(solution)
 	await get_tree().process_frame
 	loading_screen.update_progress(40, "Solution complete...")
-	
-	# Chunk 3: Copy to puzzle
+
+	if Globals.debug:
+		puzzle = duplicate_grid(solution)
+		loading_screen.update_progress(100, "Debug mode: full grid")
+		await get_tree().process_frame
+		return
+
 	puzzle = duplicate_grid(solution)
 	await get_tree().process_frame
 	loading_screen.update_progress(50, "Removing numbers...")
-	
-	# Chunk 4: Remove numbers (do this in smaller chunks)
+
 	await remove_numbers_chunked(puzzle, selected_difficulty)
-	
+
 	loading_screen.update_progress(100, "Done!")
 	await get_tree().process_frame
 
@@ -259,7 +273,6 @@ func remove_numbers_chunked(grid: Array, d: String) -> void:
 	var attempts := removals * 3
 	var chunk_size := 1  # Process X removals per frame
 	var chunk_count := 0
-
 	while removed < removals and attempts > 0:
 		attempts -= 1
 		var r := randi() % SIZE
@@ -284,7 +297,7 @@ func remove_numbers_chunked(grid: Array, d: String) -> void:
 			await get_tree().process_frame
 			var progress = (float(removed) / float(removals)) * 50
 			var total_progress = 50 + progress
-			loading_screen.update_progress(total_progress, "Removing numbers...")
+			loading_screen.update_progress(total_progress, "Adding numbers...")
 
 func make_empty_grid() -> Array:
 	var grid := []
@@ -364,3 +377,4 @@ func load_puzzle() -> void:
 		if puzzle[r][c] != 0:
 			space.fixed = true
 		
+		$TimeTimer.start()
