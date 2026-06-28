@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://bicjk5v1qejgw" path="res://SF Distant Galaxy.ttf" id="11_215e1"]
 [ext_resource type="Theme" uid="uid://b88bhbgjdqr5g" path="res://game_over_buttons.tres" id="12_7sc4i"]
 [ext_resource type="Theme" uid="uid://cndcs6l2sw2ed" path="res://quitbutton.tres" id="13_lc2xo"]
+[ext_resource type="Theme" uid="uid://bviuwu626dxg7" path="res://gameoverlabels.tres" id="14_215e1"]
 
 [sub_resource type="Theme" id="Theme_feb5d"]
 Label/colors/font_color = Color(0, 0, 0, 1)
@@ -43,8 +44,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_feb5d")
 script = ExtResource("2_ryrav")
-metadata/_edit_vertical_guides_ = [1318.0, 1338.0, 1368.0, 1420.0]
-metadata/_edit_horizontal_guides_ = [-31.0, -41.0]
+metadata/_edit_vertical_guides_ = [1318.0, 1338.0, 1368.0, 1420.0, 545.0, 626.0, 682.0, 834.0, 407.0, 471.0, 512.0, 640.0, 600.0, 705.0, 745.0, 873.0, 585.0, 626.0]
+metadata/_edit_horizontal_guides_ = [-31.0, -41.0, 385.0]
 
 [node name="MainMenu720" type="Sprite2D" parent="." unique_id=1643750564]
 position = Vector2(640, 360)
@@ -295,61 +296,93 @@ theme = ExtResource("13_lc2xo")
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
-[node name="Label" type="Label" parent="GameWin" unique_id=1209106570]
+[node name="leveltime" type="Label" parent="GameWin" unique_id=1209106570]
 layout_mode = 0
-offset_left = 556.0
+offset_left = 513.0
+offset_top = 216.0
+offset_right = 658.0
+offset_bottom = 269.0
+theme = ExtResource("14_215e1")
+theme_override_font_sizes/font_size = 24
+text = "2h 15m 55s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hightime" type="Label" parent="GameWin" unique_id=1312152465]
+layout_mode = 0
+offset_left = 682.0
 offset_top = 217.0
-offset_right = 596.0
-offset_bottom = 265.0
+offset_right = 834.0
+offset_bottom = 269.0
+theme = ExtResource("14_215e1")
+theme_override_font_sizes/font_size = 24
+text = "2h 15m 55s"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="GameWin" unique_id=1312152465]
+[node name="levelscore" type="Label" parent="GameWin" unique_id=605883156]
 layout_mode = 0
-offset_left = 737.0
-offset_top = 219.0
-offset_right = 777.0
-offset_bottom = 267.0
+offset_left = 525.5
+offset_top = 272.0
+offset_right = 645.5
+offset_bottom = 324.0
+theme = ExtResource("14_215e1")
+text = "19999"
+horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="GameWin" unique_id=292774405]
+[node name="highscore" type="Label" parent="GameWin" unique_id=292774405]
 layout_mode = 0
-offset_left = 742.0
-offset_top = 273.0
-offset_right = 782.0
-offset_bottom = 321.0
+offset_left = 682.0
+offset_top = 272.0
+offset_right = 834.0
+offset_bottom = 324.0
+theme = ExtResource("14_215e1")
+text = "19999"
+horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="GameWin" unique_id=605883156]
+[node name="ez" type="Label" parent="GameWin" unique_id=1051403633]
 layout_mode = 0
-offset_left = 560.0
-offset_top = 273.0
+offset_left = 401.0
+offset_top = 384.0
+offset_right = 477.0
+offset_bottom = 432.0
+theme = ExtResource("14_215e1")
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="med" type="Label" parent="GameWin" unique_id=1310379511]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 384.0
 offset_right = 600.0
-offset_bottom = 321.0
+offset_bottom = 432.0
+theme = ExtResource("14_215e1")
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="GameWin" unique_id=1051403633]
+[node name="hd" type="Label" parent="GameWin" unique_id=447014826]
 layout_mode = 0
-offset_left = 416.0
-offset_top = 386.0
-offset_right = 456.0
-offset_bottom = 434.0
+offset_left = 636.5
+offset_top = 384.0
+offset_right = 708.5
+offset_bottom = 432.0
+theme = ExtResource("14_215e1")
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="GameWin" unique_id=1310379511]
+[node name="hc" type="Label" parent="GameWin" unique_id=1132785032]
 layout_mode = 0
-offset_left = 537.0
-offset_top = 386.0
-offset_right = 577.0
-offset_bottom = 434.0
-
-[node name="Label7" type="Label" parent="GameWin" unique_id=447014826]
-layout_mode = 0
-offset_left = 650.0
-offset_top = 386.0
-offset_right = 690.0
-offset_bottom = 434.0
-
-[node name="Label8" type="Label" parent="GameWin" unique_id=1132785032]
-layout_mode = 0
-offset_left = 792.0
-offset_top = 388.0
-offset_right = 832.0
-offset_bottom = 436.0
+offset_left = 745.0
+offset_top = 384.0
+offset_right = 873.0
+offset_bottom = 432.0
+theme = ExtResource("14_215e1")
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameLose" type="Control" parent="." unique_id=894196565]
 visible = false

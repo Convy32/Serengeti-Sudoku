@@ -148,10 +148,19 @@ func gameover_quit_button_pressed() -> void:
 
 func game_win():
 	$TimeTimer.stop()
-	
+	score()
+	fastest_time()
+	var leveltime = time_transform(Globals.time)
+	var hightime = time_transform(Globals.fastest_time)
 	Globals.wins[Globals.difficulty] += 1
-	
-	
+	$GameWin/leveltime.text = leveltime
+	$GameWin/hightime.text = hightime
+	$GameWin/levelscore.text = str(Globals.score)
+	$GameWin/highscore.text = str(Globals.highscore)
+	$GameWin/ez.text = str(Globals.wins["easy"])
+	$GameWin/med.text = str(Globals.wins["medium"])
+	$GameWin/hd.text = str(Globals.wins["hard"])
+	$GameWin/hc.text = str(Globals.wins["hardcore"])
 	$GameWin.visible = true
 
 func game_lose():
@@ -197,8 +206,45 @@ func time_tracking():
 	print(Globals.time)
 
 func score():
-	pass
+	var localscore = 0
+	if Globals.difficulty == "easy":
+		localscore = 5000
+	elif Globals.difficulty == "medium":
+		localscore = 10000
+	elif Globals.difficulty == "hard":
+		localscore = 15000
+	else:
+		localscore = 20000
+	
+	Globals.score = max(0, (localscore - Globals.time))
+	
+	if Globals.score > Globals.highscore:
+		Globals.highscore = Globals.score
 
+
+func fastest_time():
+	if Globals.fastest_time != 0:
+		if Globals.time < Globals.fastest_time:
+			Globals.fastest_time = Globals.time
+	else:
+		Globals.fastest_time = Globals.time
+
+func time_transform(time):
+	var hours = time / 3600
+	var remaining = time % 3600
+	var minutes = remaining / 60
+	var seconds = remaining % 60
+	
+	var timetext = []
+
+	if hours > 0:
+		timetext.append(str(hours) + "h")
+	if minutes > 0:
+		timetext.append(str(minutes) + "m")
+	if seconds > 0 or timetext.is_empty():
+		timetext.append(str(seconds) + "s")
+
+	return " ".join(timetext)
 
 
 # PUZZLE GENERATOR SECTION

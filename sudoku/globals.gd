@@ -11,14 +11,15 @@ var health = 3
 
 var debug = true
 
-var score = 0
+var fastest_time = 0
 var time = 0
+
+var highscore = 0
+var score = 0
 
 var wins = {
 	"easy": 0,
 	"medium": 0,
+	"hard": 0,
+	"hardcore": 0
 }
-var easy_wins = 0
-var medium_wins = 0
-var hard_wins = 0
-var harcore_wins = 0

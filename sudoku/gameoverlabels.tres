@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bviuwu626dxg7"]
+
+[ext_resource type="FontFile" uid="uid://b1vallubdqtnr" path="res://ChivoMono-VariableFont_wght.ttf" id="1_pkhxh"]
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/fonts/font = ExtResource("1_pkhxh")
