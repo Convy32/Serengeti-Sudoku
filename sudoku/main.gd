@@ -165,6 +165,7 @@ func game_win():
 
 func game_lose():
 	$TimeTimer.stop()
+	$GameLose/Label.text = Globals.difficulty
 	$GameLose.visible = true
 
 func _on_new_game_pressed() -> void:

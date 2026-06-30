@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://rka4ge3is85n" path="res://main.gd" id="2_ryrav"]
 [ext_resource type="Texture2D" uid="uid://c5qdecpb0w03y" path="res://greygb1.png" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://2hr8gkf330r4" path="res://Main_menu_720.png" id="3_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://fat5dswrkal5" path="res://infobox.png" id="6_80cx4"]
 [ext_resource type="Script" uid="uid://dn7hywdobsu33" path="res://loading_screen.gd" id="6_eow3j"]
 [ext_resource type="Texture2D" uid="uid://bt8yarauyheww" path="res://blackgrid1.png" id="6_ryrav"]
 [ext_resource type="Texture2D" uid="uid://bd12jw4ns8b0u" path="res://loadingscreen.png" id="7_eow3j"]
@@ -14,6 +15,7 @@
 [ext_resource type="Theme" uid="uid://b88bhbgjdqr5g" path="res://game_over_buttons.tres" id="12_7sc4i"]
 [ext_resource type="Theme" uid="uid://cndcs6l2sw2ed" path="res://quitbutton.tres" id="13_lc2xo"]
 [ext_resource type="Theme" uid="uid://bviuwu626dxg7" path="res://gameoverlabels.tres" id="14_215e1"]
+[ext_resource type="Texture2D" uid="uid://du1xvq7occ51s" path="res://Gamelose1.png" id="15_7sc4i"]
 
 [sub_resource type="Theme" id="Theme_feb5d"]
 Label/colors/font_color = Color(0, 0, 0, 1)
@@ -44,8 +46,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_feb5d")
 script = ExtResource("2_ryrav")
-metadata/_edit_vertical_guides_ = [1318.0, 1338.0, 1368.0, 1420.0, 545.0, 626.0, 682.0, 834.0, 407.0, 471.0, 512.0, 640.0, 600.0, 705.0, 745.0, 873.0, 585.0, 626.0]
-metadata/_edit_horizontal_guides_ = [-31.0, -41.0, 385.0]
+metadata/_edit_horizontal_guides_ = [644.0, 130.0, 144.0, 94.0, 154.0, 224.0, 379.0, 224.0, 379.0, 224.0, 224.0]
+metadata/_edit_vertical_guides_ = [651.0, 131.0, 293.0, 455.0, 280.0, 389.0, 651.0, 861.0]
 
 [node name="MainMenu720" type="Sprite2D" parent="." unique_id=1643750564]
 position = Vector2(640, 360)
@@ -63,6 +65,33 @@ texture = ExtResource("3_fc0e3")
 position = Vector2(376, 399)
 texture = ExtResource("6_ryrav")
 
+[node name="Infobox" type="Sprite2D" parent="." unique_id=839773783]
+position = Vector2(756, 301)
+texture = ExtResource("6_80cx4")
+
+[node name="Diff" type="Label" parent="Infobox" unique_id=1989706857]
+offset_left = -99.0
+offset_top = -43.0
+offset_right = 99.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_215e1")
+theme_override_font_sizes/font_size = 33
+text = "Hardcore"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Infobox" unique_id=1149253169]
+offset_left = -91.0
+offset_top = 34.0
+offset_right = 92.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("11_215e1")
+theme_override_font_sizes/font_size = 37
+text = "99:99:99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1870618181]
 layout_mode = 1
 anchors_preset = 8
@@ -79,20 +108,13 @@ grow_vertical = 2
 columns = 9
 script = ExtResource("1_80nbo")
 
-[node name="Button" type="Button" parent="." unique_id=1536445701]
-layout_mode = 0
-offset_left = 890.0
-offset_top = 187.0
-offset_right = 1229.0
-offset_bottom = 334.0
-text = "game win scene"
-
 [node name="MenuBar" type="MenuBar" parent="." unique_id=1693006105]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 108.0
-offset_right = 248.0
-offset_bottom = 139.0
+offset_left = 193.0
+offset_top = 115.0
+offset_right = 312.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="Check Current" type="PopupMenu" parent="MenuBar" unique_id=1638323941]
 oversampling_override = 1.0
@@ -106,10 +128,11 @@ item_2/id = 2
 
 [node name="MenuBar2" type="MenuBar" parent="." unique_id=1158981240]
 layout_mode = 0
-offset_left = 282.0
-offset_top = 108.0
-offset_right = 361.0
-offset_bottom = 139.0
+offset_left = 342.0
+offset_top = 115.0
+offset_right = 421.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="Check All" type="PopupMenu" parent="MenuBar2" unique_id=111085305]
 item_count = 3
@@ -122,18 +145,22 @@ item_2/id = 2
 
 [node name="Check Puzzle" type="Button" parent="." unique_id=2009841287]
 layout_mode = 0
-offset_left = 393.0
-offset_top = 108.0
-offset_right = 501.0
-offset_bottom = 139.0
+offset_left = 451.0
+offset_top = 115.0
+offset_right = 559.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Check Puzzle"
 
 [node name="NewGame" type="Button" parent="." unique_id=826266466]
 layout_mode = 0
-offset_left = 680.0
-offset_top = 203.0
-offset_right = 948.0
-offset_bottom = 284.0
+offset_left = 651.0
+offset_top = 154.0
+offset_right = 861.0
+offset_bottom = 204.0
+theme = ExtResource("10_lc2xo")
+theme_override_fonts/font = ExtResource("11_215e1")
+theme_override_font_sizes/font_size = 32
 text = "New game"
 
 [node name="InputBox" type="GridContainer" parent="." unique_id=818239555]
@@ -141,10 +168,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.143
 anchor_bottom = 0.367
-offset_left = 672.0
-offset_top = 372.0
-offset_right = 698.95996
-offset_bottom = 352.75998
+offset_left = 651.0
+offset_top = 399.0
+offset_right = 677.95996
+offset_bottom = 379.75998
 
 [node name="NumInputBox" type="GridContainer" parent="InputBox" unique_id=1949119020]
 layout_mode = 2
@@ -390,10 +417,68 @@ anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
+[node name="Gamelose1" type="Sprite2D" parent="GameLose" unique_id=732312624]
+position = Vector2(640, 360)
+texture = ExtResource("15_7sc4i")
+
+[node name="NewGame" type="Button" parent="GameLose" unique_id=1456769227]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 453.0
+offset_right = 586.0
+offset_bottom = 543.0
+theme = ExtResource("10_lc2xo")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_215e1")
+theme_override_font_sizes/font_size = 40
+text = "New
+Game"
+
+[node name="Button" type="Button" parent="GameLose" unique_id=737997483]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 453.0
+offset_right = 874.0
+offset_bottom = 493.0
+theme = ExtResource("12_7sc4i")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="Settings" type="Button" parent="GameLose" unique_id=1962410113]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 503.0
+offset_right = 732.0
+offset_bottom = 543.0
+theme = ExtResource("12_7sc4i")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lc2xo")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="GameLose" unique_id=1151652199]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 503.0
+offset_right = 874.0
+offset_bottom = 543.0
+theme = ExtResource("13_lc2xo")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Label" type="Label" parent="GameLose" unique_id=1654033256]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 396.525
+offset_right = 848.0
+offset_bottom = 429.525
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_215e1")
+theme_override_font_sizes/font_size = 32
+text = "Hardcore"
+
 [node name="TimeTimer" type="Timer" parent="." unique_id=1429012144]
 process_callback = 0
 
-[connection signal="pressed" from="Button" to="." method="show_game_win"]
 [connection signal="id_pressed" from="MenuBar/Check Current" to="." method="_on_check_current_id_pressed"]
 [connection signal="id_pressed" from="MenuBar2/Check All" to="." method="_on_check_all_id_pressed"]
 [connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
@@ -411,4 +496,7 @@ process_callback = 0
 [connection signal="pressed" from="GameWin/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="GameWin/Button" to="." method="gameover_mainmenu_button_pressed"]
 [connection signal="pressed" from="GameWin/Quit" to="." method="gameover_quit_button_pressed"]
+[connection signal="pressed" from="GameLose/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="GameLose/Button" to="." method="gameover_mainmenu_button_pressed"]
+[connection signal="pressed" from="GameLose/Quit" to="." method="gameover_quit_button_pressed"]
 [connection signal="timeout" from="TimeTimer" to="." method="time_tracking"]
