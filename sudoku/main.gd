@@ -9,6 +9,8 @@ func _ready() -> void:
 	
 	randomize()
 	start_generation(Globals.difficulty)
+	
+	$Infobox/Diff.text = Globals.difficulty
 
 func check_spaces(spaces: Array):
 	var result = true
@@ -137,9 +139,6 @@ func check_puzzle():
 		if Globals.health <= 0:
 			game_lose()
 
-func show_game_win() -> void:
-	game_win()
-
 func gameover_mainmenu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
@@ -202,9 +201,27 @@ func eraser_button_pressed() -> void:
 		grid_space.box_value = ""
 		grid_space.label.text = ""
 
+func pause():
+	$Pause.visible = true
+	$GridContainer.visible = false
+	$TimeTimer.stop()
+
+func unpause():
+	$GridContainer.visible = true
+	$Pause.visible = false
+	$TimeTimer.start()
+
 func time_tracking():
 	Globals.time += 1
-	print(Globals.time)
+	$Infobox/Time.text = time_format(Globals.time)
+
+func time_format(time):
+	var hours = time / 3600
+	var remaining = time % 3600
+	var minutes = remaining / 60
+	var seconds = remaining % 60
+	
+	return("%02d:%02d:%02d" % [hours, minutes, seconds])
 
 func score():
 	var localscore = 0
