@@ -1,7 +1,7 @@
 class_name GridSpace
 extends ColorRect
 
-var label 
+var label
 var active = false
 var box_value
 var fixed = false

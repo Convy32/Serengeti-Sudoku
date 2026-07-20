@@ -73,6 +73,7 @@ theme_override_styles/hover = ExtResource("6_8qtwp")
 text = "Play"
 
 [node name="Settings" type="Button" parent="." unique_id=1172136843]
+visible = false
 layout_mode = 0
 offset_left = 390.0
 offset_top = 560.0
@@ -87,9 +88,9 @@ text = "Settings"
 
 [node name="Quit" type="Button" parent="." unique_id=416332157]
 layout_mode = 0
-offset_left = 650.0
+offset_left = 520.0
 offset_top = 560.0
-offset_right = 890.0
+offset_right = 760.0
 offset_bottom = 642.0
 theme = ExtResource("3_fu7sn")
 theme_override_font_sizes/font_size = 48

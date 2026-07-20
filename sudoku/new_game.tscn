@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctrcfmrukh84y"]
 
 [ext_resource type="Script" uid="uid://b3cxdjbwoat43" path="res://new_game.gd" id="1_ned08"]
-[ext_resource type="Texture2D" uid="uid://bih2d4jkflfcg" path="res://gameselect (1).png" id="1_rnujv"]
+[ext_resource type="Texture2D" uid="uid://d3t01mgukym30" path="res://gameselect (2).png" id="2_ned08"]
 [ext_resource type="Theme" uid="uid://b2m4ma05wpjb4" path="res://new_game_buttons.tres" id="2_rnujv"]
 [ext_resource type="Theme" uid="uid://cu1jfriqfptes" path="res://close_buttons.tres" id="3_rnujv"]
 
@@ -14,9 +14,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ned08")
 
-[node name="Gameselect" type="Sprite2D" parent="." unique_id=2082243372]
+[node name="Gameselect" type="Sprite2D" parent="." unique_id=2074495917]
 position = Vector2(640, 360)
-texture = ExtResource("1_rnujv")
+texture = ExtResource("2_ned08")
 
 [node name="Easy" type="Button" parent="." unique_id=2022239173]
 layout_mode = 0

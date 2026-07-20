@@ -1,13 +1,13 @@
 extends Node
 
+
+
 var all_boxes_complete = false
 var all_rows_complete = false
 var all_columns_complete = false
 var puzzle_complete = false
 
 var difficulty = "easy"
-
-var health = 3
 
 var debug = true
 
@@ -21,5 +21,5 @@ var wins = {
 	"easy": 0,
 	"medium": 0,
 	"hard": 0,
-	"hardcore": 0
+	"hardcore": 0,
 }

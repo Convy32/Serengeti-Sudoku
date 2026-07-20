@@ -1,22 +1,19 @@
 extends Control
 
-const new_game = preload("res://new_game.tscn")
+const NEW_GAME = preload("res://new_game.tscn")
 
 @export var global_grid_container = GridContainer
 
 func _ready() -> void:
 	Globals.time = 0
-	
 	randomize()
 	start_generation(Globals.difficulty)
-	
 	$Infobox/Diff.text = Globals.difficulty
 
 func check_spaces(spaces: Array):
 	var result = true
 	var numbers_found = []
 	var duplicate_numbers = []
-	
 	for s in spaces:
 		if s.box_value in numbers_found:
 			result = false
@@ -31,7 +28,7 @@ func check_spaces(spaces: Array):
 		if s.box_value in duplicate_numbers:
 			if Globals.difficulty == "easy" or Globals.difficulty == "medium":
 				s.color = Color(0.6, 0, 0, 0.75)
-	
+
 	return result
 
 func get_active_space() -> int:
@@ -68,23 +65,25 @@ func check_current_box():
 	if Globals.difficulty == "easy":
 		var box_row = floor(get_current_row() / 3)
 		var box_column = floor(get_current_column() / 3)
-		
+
 		var spaces = []
 		for br in range(3):
-			for bc in range(3): #line below should maybe be put onto 2 lines
-				spaces.append($GridContainer.get_child((box_row * 27) + bc + (br * 9) + (box_column * 3)))
+			for bc in range(3):
+				spaces.append(
+					$GridContainer.get_child((box_row * 27) + bc + (br * 9) + (box_column * 3))
+					)
 		check_spaces(spaces)
 
 func check_all_rows() -> void:
 	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
 		Globals.all_rows_complete = false
 		var rowscomplete = 0
-		
+
 		for c in range(9):
 			var row = []
 			for r in range(9):
 				row.append($GridContainer.get_child(r + (c * 9)))
-				
+
 			if check_spaces(row) == true:
 				rowscomplete += 1
 
@@ -95,15 +94,15 @@ func check_all_columns() -> void:
 	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
 		Globals.all_columns_complete = false
 		var columnscomplete = 0
-		
+
 		for r in range(9):
 			var column = []
 			for c in range(9):
 				column.append($GridContainer.get_child((c * 9) + r))
-				
+
 			if check_spaces(column) == true:
 				columnscomplete += 1
-			
+
 		if columnscomplete == 9:
 			Globals.all_columns_complete = true
 
@@ -111,17 +110,19 @@ func check_all_boxes() -> void:
 	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
 		Globals.all_boxes_complete = false
 		var boxescomplete = 0
-		
+
 		for br in range(3):
 			for bc in range(3):
 				var box = []
 				for r in range(3):
 					for c in range(3): #line below should be put onto 2 lines
-						box.append($GridContainer.get_child(c + (9 * r) + (3 * bc) + (27 * br)))
-					
+						box.append(
+							$GridContainer.get_child(c + (9 * r) + (3 * bc) + (27 * br))
+							)
+
 				if check_spaces(box) == true:
 					boxescomplete += 1
-			
+
 		if boxescomplete == 9:
 			Globals.all_boxes_complete = true
 
@@ -129,15 +130,13 @@ func check_puzzle():
 	check_all_boxes()
 	check_all_rows()
 	check_all_columns()
-	
+
 	if (Globals.all_boxes_complete
-	and Globals.all_rows_complete 
+	and Globals.all_rows_complete
 	and Globals.all_columns_complete):
 		game_win()
 	elif Globals.difficulty == "hardcore":
-		Globals.health -= 1
-		if Globals.health <= 0:
-			game_lose()
+		game_lose()
 
 func gameover_mainmenu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")
@@ -168,7 +167,7 @@ func game_lose():
 	$GameLose.visible = true
 
 func _on_new_game_pressed() -> void:
-	var game_selector = new_game.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var game_selector = NEW_GAME.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	add_child(game_selector)
 
 func _on_check_all_id_pressed(id: int) -> void:
@@ -220,7 +219,7 @@ func time_format(time):
 	var remaining = time % 3600
 	var minutes = remaining / 60
 	var seconds = remaining % 60
-	
+
 	return("%02d:%02d:%02d" % [hours, minutes, seconds])
 
 func score():
@@ -228,14 +227,14 @@ func score():
 	if Globals.difficulty == "easy":
 		localscore = 5000
 	elif Globals.difficulty == "medium":
-		localscore = 10000
+		localscore = 10_000
 	elif Globals.difficulty == "hard":
-		localscore = 15000
+		localscore = 15_000
 	else:
-		localscore = 20000
-	
+		localscore = 20_000
+
 	Globals.score = max(0, (localscore - Globals.time))
-	
+
 	if Globals.score > Globals.highscore:
 		Globals.highscore = Globals.score
 
@@ -252,7 +251,7 @@ func time_transform(time):
 	var remaining = time % 3600
 	var minutes = remaining / 60
 	var seconds = remaining % 60
-	
+
 	var timetext = []
 
 	if hours > 0:
@@ -273,6 +272,7 @@ func time_transform(time):
 # This is essentially acting as an API, just adapted for Godot.
 # https://www.101computing.net/sudoku-generator-algorithm/
 # Thank you internet
+# (Ignore conventions from here, it is supposed to be seperate file but cannot)
 
 const SIZE := 9
 
