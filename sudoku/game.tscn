@@ -131,7 +131,7 @@ script = ExtResource("2_ryrav")
 metadata/_edit_horizontal_guides_ = [644.0, 130.0, 144.0, 94.0, 154.0, 224.0, 379.0, 224.0, 380.0, 224.0, 224.0, 340.0, 430.0, 390.0, 115.0, 146.0]
 metadata/_edit_vertical_guides_ = [651.0, 131.0, 293.0, 455.0, 280.0, 389.0, 651.0, 861.0, 621.0, 602.0]
 
-[node name="MainMenu720" type="Sprite2D" parent="." unique_id=1643750564]
+[node name="Background" type="Sprite2D" parent="." unique_id=1643750564]
 position = Vector2(640, 360)
 texture = ExtResource("3_j5wjh")
 
@@ -139,19 +139,19 @@ texture = ExtResource("3_j5wjh")
 position = Vector2(640, 360)
 enabled = false
 
-[node name="Greygb1" type="Sprite2D" parent="." unique_id=1592395202]
+[node name="GreyBackground" type="Sprite2D" parent="." unique_id=1592395202]
 position = Vector2(376, 399)
 texture = ExtResource("3_fc0e3")
 
-[node name="Blackgrid1" type="Sprite2D" parent="." unique_id=1231953198]
+[node name="BlackGrid" type="Sprite2D" parent="." unique_id=1231953198]
 position = Vector2(376, 399)
 texture = ExtResource("6_ryrav")
 
-[node name="Infobox" type="Sprite2D" parent="." unique_id=839773783]
+[node name="InfoBox" type="Sprite2D" parent="." unique_id=839773783]
 position = Vector2(756, 301)
 texture = ExtResource("6_80cx4")
 
-[node name="Diff" type="Label" parent="Infobox" unique_id=1989706857]
+[node name="Diff" type="Label" parent="InfoBox" unique_id=1989706857]
 offset_left = -99.0
 offset_top = -43.0
 offset_right = 99.0
@@ -163,7 +163,7 @@ text = "Easy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Time" type="Label" parent="Infobox" unique_id=1149253169]
+[node name="Time" type="Label" parent="InfoBox" unique_id=1149253169]
 offset_left = -91.0
 offset_top = 34.0
 offset_right = 92.0
@@ -212,7 +212,7 @@ offset_right = 374.0
 offset_bottom = 146.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="Check Current" type="PopupMenu" parent="MenuBar" unique_id=1638323941]
+[node name="CheckCurrent" type="PopupMenu" parent="MenuBar" unique_id=1638323941]
 oversampling_override = 1.0
 item_count = 3
 item_0/text = "Box"
@@ -230,7 +230,7 @@ offset_right = 483.0
 offset_bottom = 146.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="Check All" type="PopupMenu" parent="MenuBar2" unique_id=111085305]
+[node name="CheckAll" type="PopupMenu" parent="MenuBar2" unique_id=111085305]
 item_count = 3
 item_0/text = "Boxes"
 item_0/id = 0
@@ -239,7 +239,7 @@ item_1/id = 1
 item_2/text = "Columns"
 item_2/id = 2
 
-[node name="Check Puzzle" type="Button" parent="." unique_id=2009841287]
+[node name="CheckPuzzle" type="Button" parent="." unique_id=2009841287]
 layout_mode = 0
 offset_left = 513.0
 offset_top = 115.0
@@ -344,7 +344,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 script = ExtResource("6_eow3j")
 
-[node name="Loadingscreen" type="Sprite2D" parent="LoadingScreen" unique_id=534134066]
+[node name="LoadingScreenImage" type="Sprite2D" parent="LoadingScreen" unique_id=534134066]
 position = Vector2(640, 360)
 texture = ExtResource("7_eow3j")
 
@@ -371,7 +371,7 @@ anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="GameWin2" type="Sprite2D" parent="GameWin" unique_id=841511387]
+[node name="GameWinImage" type="Sprite2D" parent="GameWin" unique_id=841511387]
 position = Vector2(640, 360)
 texture = ExtResource("9_iotsf")
 
@@ -420,7 +420,7 @@ theme = ExtResource("13_lc2xo")
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
-[node name="leveltime" type="Label" parent="GameWin" unique_id=1209106570]
+[node name="LevelTime" type="Label" parent="GameWin" unique_id=1209106570]
 layout_mode = 0
 offset_left = 513.0
 offset_top = 216.0
@@ -432,7 +432,7 @@ text = "2h 15m 55s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hightime" type="Label" parent="GameWin" unique_id=1312152465]
+[node name="HighTime" type="Label" parent="GameWin" unique_id=1312152465]
 layout_mode = 0
 offset_left = 682.0
 offset_top = 217.0
@@ -444,7 +444,7 @@ text = "2h 15m 55s"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="levelscore" type="Label" parent="GameWin" unique_id=605883156]
+[node name="LevelScore" type="Label" parent="GameWin" unique_id=605883156]
 layout_mode = 0
 offset_left = 525.5
 offset_top = 272.0
@@ -454,7 +454,7 @@ theme = ExtResource("14_215e1")
 text = "19999"
 horizontal_alignment = 1
 
-[node name="highscore" type="Label" parent="GameWin" unique_id=292774405]
+[node name="Highscore" type="Label" parent="GameWin" unique_id=292774405]
 layout_mode = 0
 offset_left = 682.0
 offset_top = 272.0
@@ -464,7 +464,7 @@ theme = ExtResource("14_215e1")
 text = "19999"
 horizontal_alignment = 1
 
-[node name="ez" type="Label" parent="GameWin" unique_id=1051403633]
+[node name="Easy" type="Label" parent="GameWin" unique_id=1051403633]
 layout_mode = 0
 offset_left = 401.0
 offset_top = 384.0
@@ -475,7 +475,7 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="med" type="Label" parent="GameWin" unique_id=1310379511]
+[node name="Medium" type="Label" parent="GameWin" unique_id=1310379511]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 384.0
@@ -486,7 +486,7 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hd" type="Label" parent="GameWin" unique_id=447014826]
+[node name="Hard" type="Label" parent="GameWin" unique_id=447014826]
 layout_mode = 0
 offset_left = 636.5
 offset_top = 384.0
@@ -497,7 +497,7 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="hc" type="Label" parent="GameWin" unique_id=1132785032]
+[node name="Hardcore" type="Label" parent="GameWin" unique_id=1132785032]
 layout_mode = 0
 offset_left = 745.0
 offset_top = 384.0
@@ -514,7 +514,7 @@ anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="Gamelose1" type="Sprite2D" parent="GameLose" unique_id=732312624]
+[node name="GameLose" type="Sprite2D" parent="GameLose" unique_id=732312624]
 position = Vector2(640, 360)
 texture = ExtResource("15_7sc4i")
 
@@ -583,7 +583,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Pausescreen" type="Sprite2D" parent="Pause" unique_id=494990808]
+[node name="PauseScreen" type="Sprite2D" parent="Pause" unique_id=494990808]
 position = Vector2(640, 360)
 texture = ExtResource("17_e8heu")
 
@@ -650,9 +650,9 @@ theme_override_font_sizes/font_size = 30
 text = "Quit"
 
 [connection signal="pressed" from="PauseButton" to="." method="pause"]
-[connection signal="id_pressed" from="MenuBar/Check Current" to="." method="_on_check_current_id_pressed"]
-[connection signal="id_pressed" from="MenuBar2/Check All" to="." method="_on_check_all_id_pressed"]
-[connection signal="pressed" from="Check Puzzle" to="." method="check_puzzle"]
+[connection signal="id_pressed" from="MenuBar/CheckCurrent" to="." method="_on_check_current_id_pressed"]
+[connection signal="id_pressed" from="MenuBar2/CheckAll" to="." method="_on_check_all_id_pressed"]
+[connection signal="pressed" from="CheckPuzzle" to="." method="check_puzzle"]
 [connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="InputBox/NumInputBox/Button1" to="." method="input_button_pressed" binds= [1]]
 [connection signal="pressed" from="InputBox/NumInputBox/Button2" to="." method="input_button_pressed" binds= [2]]

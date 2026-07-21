@@ -1,14 +1,18 @@
 extends Control
 
 const NEW_GAME = preload("res://new_game.tscn")
+const SECS_HR = 3600 # seconds in an hour
+const SECS_MIN = 60 # seconds in a minute
 
 @export var global_grid_container = GridContainer
+
 
 func _ready() -> void:
 	Globals.time = 0
 	randomize()
 	start_generation(Globals.difficulty)
 	$Infobox/Diff.text = Globals.difficulty
+
 
 func check_spaces(spaces: Array):
 	var result = true
@@ -31,100 +35,114 @@ func check_spaces(spaces: Array):
 
 	return result
 
+
 func get_active_space() -> int:
-	for s in range($GridContainer.get_child_count()): #get amount of spaces(s)
+	for s in range($GridContainer.get_child_count()): # get amount of spaces(s)
 		var space = $GridContainer.get_child(s)
 		if space.active:
-			return s #return the useable space id (0-80)
-	return 0 #return 0 if there is no active space (functions use this)
+			return s # return the useable space id 
+	return 0 # return 0 if there is no active space (functions use this)
+
 
 func get_current_row():
 	@warning_ignore("integer_division")
-	var active_row = floor(get_active_space() / 9)
+	var active_row = floor(get_active_space() / X.GRID_SIZE)
 	return active_row
 
+
 func get_current_column():
-	var active_column = (get_active_space() - (get_current_row() * 9))
+	var active_column = (get_active_space() - (get_current_row() * X.GRID_SIZE))
 	return active_column
+
 
 func check_current_row():
 	if Globals.difficulty == "easy":
 		var spaces = []
-		for s in range(9):
-			spaces.append($GridContainer.get_child((get_current_row() * 9) + s))
+		for s in range(X.GRID_SIZE):
+			spaces.append($GridContainer.get_child((get_current_row() * X.GRID_SIZE) + s))
 		check_spaces(spaces)
+
 
 func check_current_column():
 	if Globals.difficulty == "easy":
 		var spaces = []
-		for s in range(9):
-			spaces.append($GridContainer.get_child(get_current_column() + (s * 9)))
+		for s in range(X.GRID_SIZE):
+			spaces.append($GridContainer.get_child(get_current_column() + (s * X.GRID_SIZE)))
 		check_spaces(spaces)
+
 
 func check_current_box():
 	if Globals.difficulty == "easy":
-		var box_row = floor(get_current_row() / 3)
-		var box_column = floor(get_current_column() / 3)
+		var box_row = floor(get_current_row() / X.GRID_SIZE_R)
+		var box_column = floor(get_current_column() / X.GRID_SIZE_R)
 
 		var spaces = []
-		for br in range(3):
-			for bc in range(3):
+		for br in range(X.GRID_SIZE_R):
+			for bc in range(X.GRID_SIZE_R):
 				spaces.append(
-					$GridContainer.get_child((box_row * 27) + bc + (br * 9) + (box_column * 3))
+					$GridContainer.get_child(
+						(box_row * X.GRID_SIZE * X.GRID_SIZE_R) + bc + (br * X.GRID_SIZE) + 
+						(box_column * X.GRID_SIZE_R))
 					)
 		check_spaces(spaces)
+
 
 func check_all_rows() -> void:
 	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
 		Globals.all_rows_complete = false
 		var rowscomplete = 0
 
-		for c in range(9):
+		for c in range(X.GRID_SIZE):
 			var row = []
-			for r in range(9):
-				row.append($GridContainer.get_child(r + (c * 9)))
+			for r in range(X.GRID_SIZE):
+				row.append($GridContainer.get_child(r + (c * X.GRID_SIZE)))
 
 			if check_spaces(row) == true:
 				rowscomplete += 1
 
-		if rowscomplete == 9:
+		if rowscomplete == X.GRID_SIZE:
 			Globals.all_rows_complete = true
+
 
 func check_all_columns() -> void:
 	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
 		Globals.all_columns_complete = false
 		var columnscomplete = 0
 
-		for r in range(9):
+		for r in range(X.GRID_SIZE):
 			var column = []
-			for c in range(9):
-				column.append($GridContainer.get_child((c * 9) + r))
+			for c in range(X.GRID_SIZE):
+				column.append($GridContainer.get_child((c * X.GRID_SIZE) + r))
 
 			if check_spaces(column) == true:
 				columnscomplete += 1
 
-		if columnscomplete == 9:
+		if columnscomplete == X.GRID_SIZE:
 			Globals.all_columns_complete = true
+
 
 func check_all_boxes() -> void:
 	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
 		Globals.all_boxes_complete = false
 		var boxescomplete = 0
 
-		for br in range(3):
-			for bc in range(3):
+		for br in range(X.GRID_SIZE_R):
+			for bc in range(X.GRID_SIZE_R):
 				var box = []
-				for r in range(3):
-					for c in range(3): #line below should be put onto 2 lines
+				for r in range(X.GRID_SIZE_R):
+					for c in range(X.GRID_SIZE_R):
 						box.append(
-							$GridContainer.get_child(c + (9 * r) + (3 * bc) + (27 * br))
+							$GridContainer.get_child(
+								c + (X.GRID_SIZE * r) + (X.GRID_SIZE_R * bc) + 
+								(X.GRID_SIZE_R * X.GRID_SIZE * br))
 							)
 
 				if check_spaces(box) == true:
 					boxescomplete += 1
 
-		if boxescomplete == 9:
+		if boxescomplete == X.GRID_SIZE:
 			Globals.all_boxes_complete = true
+
 
 func check_puzzle():
 	check_all_boxes()
@@ -138,11 +156,14 @@ func check_puzzle():
 	elif Globals.difficulty == "hardcore":
 		game_lose()
 
+
 func gameover_mainmenu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
+
 func gameover_quit_button_pressed() -> void:
 	get_tree().quit()
+
 
 func game_win():
 	$TimeTimer.stop()
@@ -151,40 +172,43 @@ func game_win():
 	var leveltime = time_transform(Globals.time)
 	var hightime = time_transform(Globals.fastest_time)
 	Globals.wins[Globals.difficulty] += 1
-	$GameWin/leveltime.text = leveltime
-	$GameWin/hightime.text = hightime
-	$GameWin/levelscore.text = str(Globals.score)
-	$GameWin/highscore.text = str(Globals.highscore)
-	$GameWin/ez.text = str(Globals.wins["easy"])
-	$GameWin/med.text = str(Globals.wins["medium"])
-	$GameWin/hd.text = str(Globals.wins["hard"])
-	$GameWin/hc.text = str(Globals.wins["hardcore"])
+	$GameWin/LevelTime.text = leveltime
+	$GameWin/HighTime.text = hightime
+	$GameWin/LevelScore.text = str(Globals.score)
+	$GameWin/Highscore.text = str(Globals.highscore)
+	$GameWin/Easy.text = str(Globals.wins["easy"])
+	$GameWin/Medium.text = str(Globals.wins["medium"])
+	$GameWin/Hard.text = str(Globals.wins["hard"])
+	$GameWin/Hardcore.text = str(Globals.wins["hardcore"])
 	$GameWin.visible = true
+
 
 func game_lose():
 	$TimeTimer.stop()
 	$GameLose/Label.text = Globals.difficulty
 	$GameLose.visible = true
 
+
 func _on_new_game_pressed() -> void:
 	var game_selector = NEW_GAME.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	add_child(game_selector)
 
+
 func _on_check_all_id_pressed(id: int) -> void:
-	if id == 0: #boxes
+	if id == 0: # boxes
 		check_all_boxes()
-	elif id == 1: #rows
+	elif id == 1: # rows
 		check_all_rows()
-	elif id == 2: #cols
+	elif id == 2: # cols
 		check_all_columns()
 
 
 func _on_check_current_id_pressed(id: int) -> void:
-	if id == 0: #box
+	if id == 0: # box
 		check_current_box()
-	if id == 1: #row
+	if id == 1: # row
 		check_current_row()
-	if id == 2: #col
+	if id == 2: # col
 		check_current_column()
 
 
@@ -194,33 +218,39 @@ func input_button_pressed(extra_arg_0: int) -> void:
 		grid_space.box_value = str(extra_arg_0)
 		grid_space.label.text = str(extra_arg_0)
 
+
 func eraser_button_pressed() -> void:
 	var grid_space = $GridContainer.get_child(get_active_space())
 	if not grid_space.fixed:
 		grid_space.box_value = ""
 		grid_space.label.text = ""
 
+
 func pause():
 	$Pause.visible = true
 	$GridContainer.visible = false
 	$TimeTimer.stop()
+
 
 func unpause():
 	$GridContainer.visible = true
 	$Pause.visible = false
 	$TimeTimer.start()
 
+
 func time_tracking():
 	Globals.time += 1
 	$Infobox/Time.text = time_format(Globals.time)
 
+
 func time_format(time):
-	var hours = time / 3600
-	var remaining = time % 3600
-	var minutes = remaining / 60
-	var seconds = remaining % 60
+	var hours = time / SECS_HR
+	var remaining = time % SECS_HR
+	var minutes = remaining / SECS_MIN
+	var seconds = remaining % SECS_MIN
 
 	return("%02d:%02d:%02d" % [hours, minutes, seconds])
+
 
 func score():
 	var localscore = 0
@@ -246,11 +276,12 @@ func fastest_time():
 	else:
 		Globals.fastest_time = Globals.time
 
+
 func time_transform(time):
-	var hours = time / 3600
-	var remaining = time % 3600
-	var minutes = remaining / 60
-	var seconds = remaining % 60
+	var hours = time / SECS_HR
+	var remaining = time % SECS_HR
+	var minutes = remaining / SECS_MIN
+	var seconds = remaining % SECS_MIN
 
 	var timetext = []
 
@@ -263,7 +294,7 @@ func time_transform(time):
 
 	return " ".join(timetext)
 
-
+# END OF FILE
 # PUZZLE GENERATOR SECTION
 
 # This script was built from an algorithm by 101computing.net
