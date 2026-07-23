@@ -11,7 +11,7 @@ func _ready() -> void:
 	Globals.time = 0
 	randomize()
 	start_generation(Globals.difficulty)
-	$Infobox/Diff.text = Globals.difficulty
+	$InfoBox/Diff.text = Globals.difficulty
 
 
 func check_spaces(spaces: Array):
@@ -240,7 +240,7 @@ func unpause():
 
 func time_tracking():
 	Globals.time += 1
-	$Infobox/Time.text = time_format(Globals.time)
+	$InfoBox/Time.text = time_format(Globals.time)
 
 
 func time_format(time):

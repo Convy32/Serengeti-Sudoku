@@ -6,6 +6,7 @@ var active = false
 var box_value
 var fixed = false
 
+
 func _ready() -> void:
 	add_to_group("grid_spaces")
 	custom_minimum_size = Vector2(X.GRID_PX, X.GRID_PX)
@@ -19,6 +20,7 @@ func _ready() -> void:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		for space in get_tree().get_nodes_in_group("grid_spaces"):
@@ -28,6 +30,7 @@ func _gui_input(event: InputEvent) -> void:
 				space.color = Color.LIGHT_GRAY
 		active = true
 		color = Color.DARK_GRAY
+
 
 func _input(event: InputEvent) -> void:
 	if not fixed:
