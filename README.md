@@ -28,7 +28,11 @@ With the universe being possibly infinite, Serengeti Sudoku utilises a space the
 
 
 
-
-
+# Credits
+## Background Image
+[Original Image and Author](https://www.flickr.com/photos/trevor_dobson_inefekt69/32690997633) <br>
+[License](https://creativecommons.org/licenses/by-nc-nd/2.0/deed.en)
+## Chivo Mono - Font
+[License](https://openfontlicense.org/)
 
 *(6.67 × 10²¹ Possible puzzles)
