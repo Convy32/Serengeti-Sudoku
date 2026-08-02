@@ -4,6 +4,8 @@ const NEW_GAME = preload("res://new_game.tscn")
 const SECS_HR = 3600 # seconds in an hour
 const SECS_MIN = 60 # seconds in a minute
 
+var check_all = false
+
 @export var global_grid_container = GridContainer
 
 
@@ -26,11 +28,11 @@ func check_spaces(spaces: Array):
 			numbers_found.append(s.box_value)
 		if s.box_value == "":
 			result = false
-			if Globals.difficulty == "easy" or Globals.difficulty == "medium":
+			if Globals.difficulty != "hard":
 				s.color = Color(0.6, 0.0, 0.0, 0.75)
 	for s in spaces:
 		if s.box_value in duplicate_numbers:
-			if Globals.difficulty == "easy" or Globals.difficulty == "medium":
+			if Globals.difficulty != "hard":
 				s.color = Color(0.6, 0, 0, 0.75)
 
 	return result
@@ -88,7 +90,7 @@ func check_current_box():
 
 
 func check_all_rows() -> void:
-	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
+	if Globals.difficulty == "medium" or Globals.difficulty == "easy" or check_all == true:
 		Globals.all_rows_complete = false
 		var rowscomplete = 0
 
@@ -105,7 +107,7 @@ func check_all_rows() -> void:
 
 
 func check_all_columns() -> void:
-	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
+	if Globals.difficulty == "medium" or Globals.difficulty == "easy" or check_all == true:
 		Globals.all_columns_complete = false
 		var columnscomplete = 0
 
@@ -122,7 +124,7 @@ func check_all_columns() -> void:
 
 
 func check_all_boxes() -> void:
-	if Globals.difficulty == "medium" or Globals.difficulty == "easy":
+	if Globals.difficulty == "medium" or Globals.difficulty == "easy" or check_all == true:
 		Globals.all_boxes_complete = false
 		var boxescomplete = 0
 
@@ -145,9 +147,13 @@ func check_all_boxes() -> void:
 
 
 func check_puzzle():
+	check_all = true
+	
 	check_all_boxes()
 	check_all_rows()
 	check_all_columns()
+	
+	check_all = false
 
 	if (Globals.all_boxes_complete
 	and Globals.all_rows_complete

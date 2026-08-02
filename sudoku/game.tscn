@@ -20,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://ci565aspcoshr" path="res://bluenorm.tres" id="18_e36ub"]
 [ext_resource type="StyleBox" uid="uid://djg7f7e1rylcy" path="res://bluepress.tres" id="19_hb5m1"]
 [ext_resource type="StyleBox" uid="uid://y617oht8tdhk" path="res://bluegov.tres" id="20_x5p1p"]
+[ext_resource type="Texture2D" uid="uid://1ygtm0mjin1i" path="res://DarkBackground1.png" id="21_hb5m1"]
 
 [sub_resource type="Theme" id="Theme_feb5d"]
 Label/colors/font_color = Color(0, 0, 0, 1)
@@ -515,14 +516,18 @@ offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="GameLose" type="Sprite2D" parent="GameLose" unique_id=732312624]
-position = Vector2(640, 360)
+position = Vector2(885, 360)
 texture = ExtResource("15_7sc4i")
+
+[node name="DarkBackground1" type="Sprite2D" parent="GameLose" unique_id=189503819]
+position = Vector2(122.5, 360)
+texture = ExtResource("21_hb5m1")
 
 [node name="NewGame" type="Button" parent="GameLose" unique_id=1456769227]
 layout_mode = 0
-offset_left = 406.0
+offset_left = 651.0
 offset_top = 453.0
-offset_right = 586.0
+offset_right = 831.0
 offset_bottom = 543.0
 theme = ExtResource("10_lc2xo")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -533,9 +538,9 @@ Game"
 
 [node name="Button" type="Button" parent="GameLose" unique_id=737997483]
 layout_mode = 0
-offset_left = 602.0
+offset_left = 847.0
 offset_top = 453.0
-offset_right = 874.0
+offset_right = 1119.0
 offset_bottom = 493.0
 theme = ExtResource("12_7sc4i")
 theme_override_font_sizes/font_size = 32
@@ -555,9 +560,9 @@ text = "Settings"
 
 [node name="Quit" type="Button" parent="GameLose" unique_id=1151652199]
 layout_mode = 0
-offset_left = 602.0
+offset_left = 847.0
 offset_top = 503.0
-offset_right = 874.0
+offset_right = 1119.0
 offset_bottom = 543.0
 theme = ExtResource("13_lc2xo")
 theme_override_font_sizes/font_size = 30
@@ -565,9 +570,9 @@ text = "Quit"
 
 [node name="Label" type="Label" parent="GameLose" unique_id=1654033256]
 layout_mode = 0
-offset_left = 656.0
+offset_left = 901.0
 offset_top = 396.525
-offset_right = 848.0
+offset_right = 1093.0
 offset_bottom = 429.525
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_215e1")
