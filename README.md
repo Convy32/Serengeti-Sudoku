@@ -26,7 +26,11 @@ With the universe being possibly infinite, Serengeti Sudoku utilises a space the
 ### Game Over
 ![IMG](/loss.png)
 
-
+# Development
+1. Install Godot
+2. Import project as ZIP
+3. Press Play
+4. Enjoy!
 
 # Credits
 ## Background Image
