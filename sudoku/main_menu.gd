@@ -8,5 +8,5 @@ func _on_exit_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	var game_selector = NEW_GAME.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var game_selector = NEW_GAME.instantiate()
 	add_child(game_selector)

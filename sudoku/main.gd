@@ -196,7 +196,7 @@ func game_lose():
 
 
 func _on_new_game_pressed() -> void:
-	var game_selector = NEW_GAME.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var game_selector = NEW_GAME.instantiate()
 	add_child(game_selector)
 
 
